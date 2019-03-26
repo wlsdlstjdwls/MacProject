@@ -18,7 +18,7 @@ public class MainController {
 	@RequestMapping(value="/index", method = RequestMethod.GET)
 	public String index(HttpServletRequest req, HttpServletResponse resp, HttpSession session) {
 		
-		req.setAttribute("name", "김성진");
+		req.setAttribute("name", "김성진2");
 		
 		return "mpro/main/index";
 	}
