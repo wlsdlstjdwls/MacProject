@@ -1,0 +1,133 @@
+
+/* Common CSS - main.css */
+
+/* html */
+html {
+	margin: 0px;
+}
+
+/* body */
+body {
+	margin: 0px;
+}
+
+
+/* a */
+a {
+	color: #343a40;
+}
+
+a:hover {
+	color: #343a40;
+	text-decoration: none;
+}
+
+/* spacebar */
+.spacebar-5 {
+    content: " ";
+    margin: 0px 5px;
+}
+
+/* line-height */
+.line-height-5 {
+	display: block;
+	margin: 5px 0px;
+}
+.line-height-10 {
+    display: block;
+    margin: 10px 0px;
+}
+
+
+/* nav */
+#navigation {
+    border: 1px solid red;
+    text-align: center;
+}
+
+#navigation .nav {
+    text-align: center;
+    margin: 5px auto 5px auto;
+    display: "inline-block";
+    width: 1000px;
+}
+
+#navigation .nav li {
+    color: black;
+    font-size: 1.7em;
+    border: 0px red solid;
+    margin: 0px;
+    width: 200px;
+}
+
+#navigation .nav li:first-child {
+    margin-left: 0px;
+}
+
+#navigation .nav li:last-child {
+    margin-right: 0px;
+}
+
+#navigation .nav li a {
+    border: 0px solid purple;
+    width: 100%;
+    display: inline-block;
+}
+
+/* footer */
+#footer {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #999;
+	color: white;
+	min-height: 150px;
+}
+
+#footer #footer-container {
+	width: 1200px;
+	margin: 0px auto;
+}
+
+.footer-content {
+	width: 800px;
+	padding-left: 10px;
+	display: inline-block;
+	float: left;
+}
+
+.footer-follow {
+	width: 390px;
+	display: inline-block;
+	float: left;
+	text-align: center;
+}
+
+#footer #footer-container:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#followbox {
+	border: 1px solid red;
+}
+
+.follow-name {
+	text-align: left;
+	color: white;
+	font-size: 1.7em;
+	margin-left: 20px;
+}
+
+.instagram {
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background-image: url('/resources/asset/images/logo/glyph-logo_May2016.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+	cursor: pointer;
+	-webkit-filter: invert(100%);
+}
+
+
