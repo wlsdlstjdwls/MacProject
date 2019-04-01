@@ -11,6 +11,16 @@ body {
 	margin: 0px;
 }
 
+/* display */
+.inline-block {
+	display: inline-block;
+}
+
+/* margin */
+.margin-center {
+	margin: 0px auto;
+}
+
 
 /* a */
 a {
@@ -23,6 +33,10 @@ a:hover {
 }
 
 /* spacebar */
+.spacebar-3 {
+    content: " ";
+    margin: 0px 3px;
+}
 .spacebar-5 {
     content: " ";
     margin: 0px 5px;
@@ -41,7 +55,7 @@ a:hover {
 
 /* nav */
 #navigation {
-    border: 1px solid red;
+    border: 0px solid red;
     text-align: center;
 }
 
@@ -73,6 +87,21 @@ a:hover {
     width: 100%;
     display: inline-block;
 }
+#navigation .nav li a:hover {
+	border-bottom: 0px solid black;
+	transition: border-bottom 2s;
+}
+#navigation .nav li div {
+	border: 1px solid black;
+	opacity: 0;
+	width: 0px;
+}
+
+.nav .active a {
+	color: black;
+	text-shadow: 1px 1px 1px black;
+}
+
 
 /* footer */
 #footer {
@@ -129,5 +158,36 @@ a:hover {
 	cursor: pointer;
 	-webkit-filter: invert(100%);
 }
+
+
+
+/* macaron */
+.taste {
+    color: white;
+    background-color: red;
+    border-radius: 3px;
+    font-size: 0.8em;
+    padding: 2px;
+}
+
+.taste-bold {
+    font-weight: bold;
+}
+
+.go_info a {
+    color: #FF5555;
+}
+
+.go_info:hover {
+    color: #8CB9F3;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+
 
 

@@ -7,3 +7,4 @@
 <script src="resources/asset/js/jquery-3.3.1.js"></script>
 <script src="resources/asset/js/bootstrap.js"></script>
 <script src="resources/asset/js/vue.js"></script>
+<script src="resources/asset/js/main.js"></script>
