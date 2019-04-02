@@ -154,6 +154,11 @@
                cursor: pointer;
 	       }
 	       
+	       
+	       #btnDrag {
+	           opacity: 0.5;
+	       }
+	       
 	    </style>
 	    <script>
 	       
@@ -164,7 +169,9 @@
 	    	   init_Menu();
 	    	   
 	    	   $(".macaronbox").click(function() {
-	    		   current_macaron_cnt = add_macaron($(this).attr("id"), current_macaron_cnt);
+	    		   if($("#btnSelect").val() == "1") {
+	    			   current_macaron_cnt = add_macaron($(this).attr("id"), current_macaron_cnt);
+	    		   }
 	    	   });
 	    	   
 	    	   $(".macaronbox").draggable({
@@ -183,6 +190,22 @@
 	    	   });
 	    	   
 	    	   
+	    	   $("#btnSelect").click(function() {
+	    		   $(this).attr("class", $(this).attr("class") + " active");	    		   
+	    		   $(this).css("opacity", "1");
+	    		   $(this).val("1");
+	    		   $("#btnDrag").attr("class", "btn btn-danger btn-sm");
+	    		   $("#btnDrag").css("opacity", "0.5");
+	    		   $("#btnDrag").val("0");
+	    	   });
+	    	   $("#btnDrag").click(function() {
+                   $(this).attr("class", $(this).attr("class") + " active");                   
+                   $(this).css("opacity", "1");
+                   $(this).val("1");                   
+                   $("#btnSelect").attr("class", "btn btn-danger btn-sm");                
+                   $("#btnSelect").css("opacity", "0.5");
+                   $("#btnSelect").val("0");
+               });
 	    	   
 	       });//ready
 	       
@@ -232,7 +255,9 @@
 		            <!-- choose_menu start -->
 		            <div id="choose_menu">
 		                <form id="form1" method="get" action="">
-			                <h2>현재 선택한 메뉴</h2>
+			                <h2 class="text-left margin-left-50">
+			                    현재 선택한 메뉴
+			                </h2>
 			                <div id="current_choose_menu">
 			                    <div style="text-align: center; margin-top: 80px;">현재 선택된 메뉴가 없습니다.</div>
 			                </div>
@@ -245,7 +270,13 @@
 		                <div id="container" class="container">
 		                    <!-- macaron -->
 		                    <div id="macaronmenu">
-			                    <h2>오늘의 메뉴</h2>
+			                    <h2>
+			                        오늘의 메뉴
+			                        <div class="btn-group" role="group">
+					                    <button type="button" class="btn btn-danger btn-sm active" id="btnSelect" name="btnSelect" value="1">선택형</button>
+		                                <button type="button" class="btn btn-danger btn-sm" id="btnDrag" name="btnDrag" value="0">드래그형</button>
+	                                </div>
+			                    </h2>
 			                    <div class="macaronbox" id="macaron1">
 			                        <header>
 			                            <div class="macaron_image"></div>
