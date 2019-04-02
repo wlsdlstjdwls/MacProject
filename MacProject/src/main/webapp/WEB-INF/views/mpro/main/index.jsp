@@ -164,32 +164,22 @@
 	    	   init_Menu();
 	    	   
 	    	   $(".macaronbox").click(function() {
-	    		   var selectedId = $(this).attr("id");
-	    		   if(current_macaron_cnt == 0) {
-                       $("#current_choose_menu").html("");
-                   }
-	    		   if(!dup_macaron(selectedId)) {
-	    			   console.log(current_macaron_cnt);
-		    		   var macaron = "";
-		    		   macaron += "<div class='circlebox' name='"+selectedId+"'>";
-		    		   macaron += "<img class='circles' src='resources/asset/images/sample.png'>";
-		    		   macaron += "<div>소금바닐라";
-		    		   macaron += "<span class='spacebar-3'></span>";
-		    		   macaron += "<span>1개</span>";
-		    		   macaron += "</div>";
-		    		   macaron += "<div class='xicon' onclick='delete_macaron(event);'></div>";
-		    		   macaron += "</div>";
-		    		   $("#current_choose_menu").append(macaron);
-		    		   current_macaron_cnt++;
-		    		   if(current_macaron_cnt%6 == 1 && current_macaron_cnt != 1) {
-		    			   $("#choose_menu").css("height", parseInt($("#choose_menu").height()) + 200 + "px");
-		    			   $("#current_choose_menu").css("height", parseInt($("#current_choose_menu").height()) + 200 + "px");
-		    		   }
-	    		   }
+	    		   current_macaron_cnt = add_macaron($(this).attr("id"), current_macaron_cnt);
 	    	   });
-	    	   	    	   
-	    	   $(".macaronbox").click(function() {
-	    		    $(this).attr("class", "macaronbox selected");
+	    	   
+	    	   $(".macaronbox").draggable({
+	    		   revert: true,
+	    		   helper: "clone"
+	    	   });
+	    	   
+	    	   $("#choose_menu").droppable({
+	    		   accept: "#macaronmenu .macaronbox",
+	    		   classes: {
+	    			   "ui-droppable-active": "ui-state-highlight"
+	    		   },
+	    		   drop: function(event, ui) {
+	    			   current_macaron_cnt = add_macaron($(ui.draggable).attr("id"), current_macaron_cnt);
+	    		   }
 	    	   });
 	    	   
 	    	   
@@ -197,6 +187,31 @@
 	       });//ready
 	       
 	       
+	       function add_macaron(selectedId, current_cnt) {
+	    	   if(!dup_macaron(selectedId)) {
+		    	   if(current_cnt == 0) {
+	                   $("#current_choose_menu").html("");
+	               }
+		    	   var macaron = "";
+	               macaron += "<div class='circlebox' name='"+selectedId+"'>";
+	               macaron += "<img class='circles' src='resources/asset/images/sample.png'>";
+	               macaron += "<div>소금바닐라";
+	               macaron += "<span class='spacebar-3'></span>";
+	               macaron += "<span>1개</span>";
+	               macaron += "</div>";
+	               macaron += "<div class='xicon' onclick='delete_macaron(event);'></div>";
+	               macaron += "</div>";
+	               $("#current_choose_menu").append(macaron);
+	               current_cnt = current_cnt + 1;
+	               if(current_cnt%6 == 1 && current_cnt != 1) {
+	                   $("#choose_menu").css("height", parseInt($("#choose_menu").height()) + 200 + "px");
+	                   $("#current_choose_menu").css("height", parseInt($("#current_choose_menu").height()) + 200 + "px");
+	               }
+	               $("#"+selectedId).attr("class", "macaronbox selected");
+	    	   }
+               return current_cnt;
+	    	   
+	       }
 	   
 	      
 	    </script>
@@ -216,10 +231,12 @@
 		            
 		            <!-- choose_menu start -->
 		            <div id="choose_menu">
-		                <h2>현재 선택한 메뉴</h2>
-		                <div id="current_choose_menu">
-		                    <div style="text-align: center; margin-top: 80px;">현재 선택된 메뉴가 없습니다.</div>
-		                </div>
+		                <form id="form1" method="get" action="">
+			                <h2>현재 선택한 메뉴</h2>
+			                <div id="current_choose_menu">
+			                    <div style="text-align: center; margin-top: 80px;">현재 선택된 메뉴가 없습니다.</div>
+			                </div>
+		                </form>
 		            </div>
 		            <!-- choose_menu end -->
 		            
